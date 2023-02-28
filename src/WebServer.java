@@ -16,7 +16,11 @@ public abstract class WebServer {
     
     /** To be overridden by subclasses */
     public abstract boolean processGETRequest(String path, PrintStream response);
-    
+
+    public URI getLaunchBrowserURI(int port) {
+        return URI.create(String.format("http://localhost:%d", port));
+    }
+
     /** Starts up the server.   This will run until processGETRequest returns true.  
      * Given an instance of a WebServer (which knows how to handle processGETRequest() 
      * run the HTTP server (that is listen on the network and forward requests to the
@@ -29,7 +33,7 @@ public abstract class WebServer {
             System.out.println("To use this server\ntype this URL into a browser:  http://localhost:" + PORT);
             ServerSocket serverConnect = new ServerSocket(PORT);          
             if (launchBrowser)
-                java.awt.Desktop.getDesktop().browse(URI.create("http://localhost:" + PORT));
+                java.awt.Desktop.getDesktop().browse(getLaunchBrowserURI(PORT));
             while (true) {
                 Socket clientConnection = serverConnect.accept();
                 // This code tells Java to run processWebRequests on a new thread of execution.

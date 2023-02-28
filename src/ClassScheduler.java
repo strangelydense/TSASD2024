@@ -5,7 +5,7 @@
     // do i have a big master schedule or keep schedule information in each SchoolClass object?  i could do both, actually
 // and then maybe how to create a schedule (dubious)(highly unlikely)(fools errand)(stupid)(could break everything)(haven't even run tests)
 
-public class ShoddyThing {
+public class ClassScheduler {
 
     public static void main(String[] args) {
         // *magically get the data and know how to read it*
